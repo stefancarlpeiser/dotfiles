@@ -56,6 +56,7 @@ plugins=(git)
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 alias dnf='apt-get'
+alias morpho="java -jar morpho.jar"
 
 source $ZSH/oh-my-zsh.sh
 
