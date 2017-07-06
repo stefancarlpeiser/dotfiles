@@ -92,29 +92,60 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+set $workspace1 "1: Chrome "
+set $workspace2 "2: Terminals "
+set $workspace3 "3: VS Code "
+set $workspace4 "4"
+set $workspace5 "5"
+set $workspace6 "6"
+set $workspace7 "7"
+set $workspace8 "8"
+set $workspace9 "9: Misc"
+set $workspace10 "10: Spotify "
+
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $workspace1
+bindsym $mod+2 workspace $workspace2 
+bindsym $mod+3 workspace $workspace3
+bindsym $mod+4 workspace $workspace4
+bindsym $mod+5 workspace $workspace5
+bindsym $mod+6 workspace $workspace6
+bindsym $mod+7 workspace $workspace7
+bindsym $mod+8 workspace $workspace8
+bindsym $mod+9 workspace $workspace9
+bindsym $mod+0 workspace $workspace10
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
+bindsym $mod+Shift+1 move container to workspace $workspace1
+bindsym $mod+Shift+2 move container to workspace $workspace2
+bindsym $mod+Shift+3 move container to workspace $workspace3
+bindsym $mod+Shift+4 move container to workspace $workspace4
+bindsym $mod+Shift+5 move container to workspace $workspace5
+bindsym $mod+Shift+6 move container to workspace $workspace6
+bindsym $mod+Shift+7 move container to workspace $workspace7
+bindsym $mod+Shift+8 move container to workspace $workspace8
+bindsym $mod+Shift+9 move container to workspace $workspace9
+bindsym $mod+Shift+0 move container to workspace $workspace10
+
+
+for_window [class="Spotify"] move to workspace $workspace10
+assign [class="Google-chrome"] $workspace1
+assign [class="Code"] $workspace3
+
+#configure variables for home setup
+set $primary "DP-1"
+set $secondary "eDP-1"
+workspace $workspace1 output $primary
+workspace $workspace2 output $primary
+workspace $workspace3 output $primary
+workspace $workspace4 output $primary
+workspace $workspace5 output $primary
+workspace $workspace6 output $primary
+workspace $workspace7 output $primary
+workspace $workspace8 output $primary
+workspace $workspace9 output $secondary
+workspace $workspace10 output $secondary
+
 
 # bind mod+Shift+i/u to Icelandic/US keyboard layout
 
@@ -168,14 +199,17 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+
+
+exec_always --no-startup-id feh --bg-scale /home/stefanp/Pictures/wallpaper/wallpaper.jpg 
+exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1080_60.00 --pos 0x0 --rotate normal --output DP-1 --primary --mode 1920x1200 --pos 1920x0 --rotate normal
+exec spotify
+exec google-chrome
+exec code
+#exec urxvt move to workspace $workspace2
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
         status_command i3status
         tray_output primary
 }
-
-
-exec_always feh --bg-scale /home/stefanp/Pictures/wallpaper/wallpaper.jpg 
-#if at work, uncomment the line here below
-#exec_always xrandr --output eDP-1 --mode 1920x1080_60.00 --pos 0x0 --rotate normal --output DP-1 --primary --mode 1920x1200 --pos 1920x0 --rotate normal
