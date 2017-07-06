@@ -19,15 +19,18 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mattn/emmet-vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
+Plugin 'honza/vim-snippets'
 Plugin 'tyrannicaltoucan/vim-quantum'
 call vundle#end()
 filetype indent plugin on
@@ -35,10 +38,6 @@ filetype indent plugin on
 " Enable syntax highlighting
 syntax enable
 set background=dark
-colorscheme quantum
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'quantum'
-let g:quantum_black = 1
 
 
 "------------------------------------------------------------

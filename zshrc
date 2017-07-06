@@ -1,11 +1,13 @@
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/stefan/.oh-my-zsh
+  export ZSH=/home/stefanp/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="agnoster"
+ZSH_THEME="robbyrussell"
+
+#ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -55,9 +57,11 @@ plugins=(git)
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-alias dnf='apt-get'
-alias morpho="java -jar morpho.jar"
-
+alias cdp="cd /home/stefanp/perforce/stefanp_workspace/dev/tsim-student-web/tasks/summer2017"
+alias dcp="docker-compose"
+alias dcpr="docker-compose restart"
+alias dcpl="docker-compose logs"
+alias dcpu="docker-compose up -d web daphne worker db www redis"
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment

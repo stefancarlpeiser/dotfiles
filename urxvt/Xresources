@@ -1,0 +1,4 @@
+URxvt.transparent: true
+URxvt.shading: 20
+! xrdb
+URxvt.foreground: #eeeeee
