@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec terminator #terminology #urxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -201,6 +201,7 @@ bindsym $mod+r mode "resize"
 
 exec_always --no-startup-id feh --bg-scale /home/stefanp/Pictures/wallpaper/wallpaper.jpg 
 exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1080_60.00 --pos 0x0 --rotate normal --output DP-1 --primary --mode 1920x1200 --pos 1920x0 --rotate normal
+exec_always --no-startup-id compton --config /home/stefanp/.config/compton/compton.conf -b
 exec spotify
 exec google-chrome
 exec code
