@@ -32,6 +32,8 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'honza/vim-snippets'
 Plugin 'tyrannicaltoucan/vim-quantum'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype indent plugin on
  
