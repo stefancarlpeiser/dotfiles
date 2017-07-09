@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -92,14 +92,14 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Chrome "
-set $workspace2 "2: Terminals "
+set $workspace1 "1: Chrome Work "
+set $workspace2 "2: vim "
 set $workspace3 "3: VS Code "
-set $workspace4 "4"
+set $workspace4 "4: Misc"
 set $workspace5 "5"
 set $workspace6 "6"
 set $workspace7 "7"
-set $workspace8 "8"
+set $workspace8 "8: Terminals "
 set $workspace9 "9: Misc"
 set $workspace10 "10: Spotify "
 
@@ -131,6 +131,18 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Google-chrome"] $workspace1
 assign [class="Code"] $workspace3
+
+workspace $workspace1 output DVI-I-1 
+workspace $workspace2 output DVI-I-1
+workspace $workspace3 output DVI-I-1
+workspace $workspace4 output DVI-I-1
+workspace $workspace5 output DVI-I-1
+workspace $workspace6 output DVI-I-1
+workspace $workspace7 output DVI-I-1
+workspace $workspace8 output DVI-D-0
+workspace $workspace9 output DVI-D-0
+workspace $workspace10 output DVI-D-0
+
 
 # bind mod+Shift+i/u to Icelandic/US keyboard layout
 
@@ -183,12 +195,14 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym $mod+p exec /home/stefan/.config/i3/i3lock-fancy-multimonitor/lock 
 
 
-
-exec_always --no-startup-id feh --bg-scale /home/stefan/Pictures/wallpapers/wallpaper.jpg 
+exec_always --no-startup-id feh --bg-scale /home/stefan/Pictures/wallpapers/wallpaper.jpg
+exec_always --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 2560x0 --rotate normal --output HDMI-0 --off --output DVI-I-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output DVI-I-0 --off --output DP-1 --off --output DP-0 --off
 exec --no-startup-id spotify
 exec --no-startup-id google-chrome
+#exec urxvt move to workspace $workspace2
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
