@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt
+bindsym $mod+Return exec urxvt256c-ml
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -91,13 +91,13 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1: Chrome Work "
-set $workspace2 "2: Terminals "
-set $workspace3 "3: VS Code "
+set $workspace2 "2: vim "
+set $workspace3 "3: Terminals "
 set $workspace4 "4: Chrome Personal "
-set $workspace5 "5: Perforce"
-set $workspace6 "6"
+set $workspace5 "5: VS Code "
+set $workspace6 "6: Perforce"
 set $workspace7 "7"
-set $workspace8 "8"
+set $workspace8 "8: Terminals "
 set $workspace9 "9: Misc"
 set $workspace10 "10: Spotify "
 
@@ -128,8 +128,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Google-chrome"] $workspace1
-assign [class="Code"] $workspace3
-assign [class="P4V"] $workspace5
+assign [class="Code"] $workspace5
+assign [class="P4V"] $workspace6
 
 workspace $workspace1 output DP-1
 workspace $workspace2 output DP-1
@@ -138,7 +138,7 @@ workspace $workspace4 output DP-1
 workspace $workspace5 output DP-1
 workspace $workspace6 output DP-1
 workspace $workspace7 output DP-1
-workspace $workspace8 output DP-1
+workspace $workspace8 output eDP-1
 workspace $workspace9 output eDP-1
 workspace $workspace10 output eDP-1
 
@@ -199,7 +199,7 @@ bindsym $mod+p exec /home/stefanp/.config/i3/i3lock-fancy-multimonitor/lock
 
 exec_always --no-startup-id feh --bg-scale /home/stefanp/Pictures/wallpaper/wallpaper.jpg 
 exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1080_60.00 --pos 0x0 --rotate normal --output DP-1 --primary --mode 1920x1200 --pos 1920x0 --rotate normal
-exec --no-startup-id compton -f
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
 exec_always --no-startup-id xrdb ~/.Xresources
 exec spotify
 exec google-chrome
