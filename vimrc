@@ -19,7 +19,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
@@ -32,7 +33,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'honza/vim-snippets'
 Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'jiangmiao/auto-pairs'
 Plugin 'Valloric/YouCompleteMe'
 call vundle#end()
 filetype indent plugin on
@@ -40,7 +40,8 @@ filetype indent plugin on
 " Enable syntax highlighting
 syntax enable
 set background=dark
-
+let g:ycm_autoclose_preview_window_after_insertion = 1
+map <C-n> :NERDTreeToggle<CR> 
 
 "------------------------------------------------------------
 " Must have options {{{1
@@ -102,7 +103,7 @@ set backspace=indent,eol,start
 " When opening a new line and no filetype-specific indenting is enabled, keep
 " the same indent as the line you're currently on. Useful for READMEs, etc.
 set autoindent
- 
+set smartindent
 " Stop certain movements from always going to the first character of a line.
 " While this behaviour deviates from that of Vi, it does what most users
 " coming from other editors would expect.
@@ -152,9 +153,10 @@ set pastetoggle=<F11>
 " Indentation settings for using 4 spaces instead of tabs.
 " Do not change 'tabstop' from its default value of 8 with this setup.
 set shiftwidth=4
-set softtabstop=4
+set softtabstop=0
 set expandtab
- 
+set tabstop=8
+set smarttab
 " Indentation settings for using hard tabs for indent. Display tabs as
 " four characters wide.
 "set shiftwidth=4
@@ -173,3 +175,9 @@ map Y y$
 " Map <C-L> (redraw screen) to also turn off search highlighting until the
 " next search
 nnoremap <C-L> :nohl<CR><C-L>
+
+
+"VIM AIRLINE SETTINGS
+"
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'onedark'
