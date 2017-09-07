@@ -57,12 +57,14 @@ plugins=(git)
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-alias cdp="cd /home/stefanp/perforce/stefanp_workspace/dev/tsim-student-web/tasks/summer2017"
 alias dcp="docker-compose"
 alias dcpr="docker-compose restart"
 alias dcpl="docker-compose logs"
-alias dcpu="docker-compose up -d web daphne worker db www redis"
+alias cdp="cd ~/Perforce/stefanp_laptop/dev/tsim-student-web/tasks/autumn2017"
+alias cdpp="cd ~/Perforce/stefanp_laptop/dev/tsim-student-web/tasks/autumn2017/frontend/django/is_tern_asr/student_version/radar_vectoring"
+
 source $ZSH/oh-my-zsh.sh
+
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
