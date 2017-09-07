@@ -30,7 +30,7 @@ font pango:DejaVu Sans Mono for Powerline 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec terminator
+bindsym $mod+Return exec terminator #urxvt256c-ml
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -91,13 +91,13 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1: Chrome Work "
-set $workspace2 "2: vim "
+set $workspace2 "2: vim "
 set $workspace3 "3: Terminals "
-set $workspace4 "4: Chrome Personal "
+set $workspace4 "4: Slack "
 set $workspace5 "5: VS Code "
-set $workspace6 "6: Perforce"
-set $workspace7 "7"
-set $workspace8 "8: Terminals "
+set $workspace6 "6: Misc"
+set $workspace7 "7: Misc"
+set $workspace8 "8: Misc"
 set $workspace9 "9: Misc"
 set $workspace10 "10: Spotify "
 
@@ -129,24 +129,13 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Google-chrome"] $workspace1
 assign [class="Code"] $workspace5
-assign [class="P4V"] $workspace6
-
-workspace $workspace1 output DP-1
-workspace $workspace2 output DP-1
-workspace $workspace3 output DP-1
-workspace $workspace4 output DP-1
-workspace $workspace5 output DP-1
-workspace $workspace6 output DP-1
-workspace $workspace7 output DP-1
-workspace $workspace8 output eDP-1
-workspace $workspace9 output eDP-1
-workspace $workspace10 output eDP-1
-
+assign [class="Slack"] $workspace4
 
 # bind mod+Shift+i/u to Icelandic/US keyboard layout
 
 bindsym $mod+Shift+u exec setxkbmap us && echo "us" > ~/.i3/kb && killall -SIGUSR1 i3status
 bindsym $mod+Shift+i exec setxkbmap is && echo "is" > ~/.i3/kb && killall -SIGUSR1 i3status
+bindsym $mod+Shift+s exec setxkbmap se && echo "se" > ~/.i3/kb && killall -SIGUSR1 i3status
 
 
 # Pulse Audio controls
@@ -194,19 +183,19 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+p exec /home/${USER}/.config/i3/i3lock-fancy-multimonitor/lock
+bindsym $mod+p exec /home/stefanp/.config/i3/i3lock-fancy-multimonitor/lock
 
 
 exec_always --no-startup-id feh --bg-scale /home/${USER}/Pictures/wallpapers/wallpaper.jpg 
-exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --primary --mode 1920x1200 --pos 1920x0 --rotate normal
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec_always --no-startup-id xrdb ~/.Xresources
+exec_always setxkbmap -option caps:ctrl_modifier
+exec --no-startup-id spotify
 exec --no-startup-id nm-applet
 exec --no-startup-id dropbox start
+exec --no-startup-id google-chrome
+exec --no-startup-id slack
 exec --no-startup-id shutter --min_at_startup
-exec_always --no-startup-id xrdb ~/.Xresources
-exec spotify
-exec google-chrome
-exec p4v
 
 
 set $bg-color            #2f343f
