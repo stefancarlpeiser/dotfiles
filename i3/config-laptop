@@ -90,7 +90,7 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
-set $workspace1 "1: Chrome Work "
+set $workspace1 "1: Chrome "
 set $workspace2 "2: vim "
 set $workspace3 "3: Terminals "
 set $workspace4 "4: Slack "
@@ -128,8 +128,8 @@ bindsym $mod+Shift+0 move container to workspace $workspace10
 
 for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Google-chrome"] $workspace1
-assign [class="Code"] $workspace5
-assign [class="Slack"] $workspace4
+assign [class="Code"] $workspace6
+assign [class="Slack"] $workspace5
 
 # bind mod+Shift+i/u to Icelandic/US keyboard layout
 
@@ -192,11 +192,10 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec_always setxkbmap -option caps:ctrl_modifier
 exec --no-startup-id spotify
 exec --no-startup-id nm-applet
-exec --no-startup-id dropbox start
-exec --no-startup-id google-chrome
 exec --no-startup-id slack
 exec --no-startup-id shutter --min_at_startup
-
+exec --no-startup-id google-chrome-stable
+exec --no-startup-id insync start
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f
