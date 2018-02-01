@@ -1,183 +1,198 @@
-" URL: http://vim.wikia.com/wiki/Example_vimrc
-" Authors: http://vim.wikia.com/wiki/Vim_on_Freenode
-" Description: A minimal, but feature rich, example .vimrc. If you are a
-"              newbie, basing your first .vimrc on this file is a good choice.
-"              If you're a more advanced user, building your own .vimrc based
-"              on this file is still a good idea.
- 
-"------------------------------------------------------------
-" Features {{{1
-"
-" These options and commands enable some very useful features in Vim, that
-" no user should have to live without.
- 
-" Set 'nocompatible' to ward off unexpected things that your distro might
-" have made, as well as sanely reset options when re-sourcing .vimrc
+scriptencoding utf-9
+set encoding=utf-8
+
 set nocompatible
+
+" Deactivate filetype identification until after plugins have been activated
 filetype off
+
+" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
+
+" let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" Code completion plugin
+Plugin 'valloric/YouCompleteMe'
+
+" Better C++ syntax highlighting
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+" Dependency for vim-easytags
+Plugin 'xolox/vim-misc'
+
+" Tagbar: display file synopsis based on Ctags
+Plugin 'majutsushi/tagbar'
+
+" File browser
 Plugin 'scrooloose/nerdtree'
-" Plugin 'scrooloose/syntastic'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'tpope/vim-fugitive'
+
+" Change surrounding delimiters via cs<current-delims><desired-delims>
 Plugin 'tpope/vim-surround'
+
+" Insert brackets in pairs
+Plugin 'Raimondi/delimitMate'
+
+" Fuzzy search tool
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'pangloss/vim-javascript'
-Plugin 'mattn/emmet-vim'
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'flazz/vim-colorschemes'
+
+" Snippet engine
+Plugin 'SirVer/ultisnips'
+
+" Snippets for ultisnips
 Plugin 'honza/vim-snippets'
-Plugin 'tyrannicaltoucan/vim-quantum'
-Plugin 'Valloric/YouCompleteMe'
-call vundle#end()
-filetype indent plugin on
- 
-" Enable syntax highlighting
-syntax enable
+
+" Typescript plugin
+
+Plugin 'Quramy/tsuquyomi'
+
+" Colour scheme
+Plugin 'morhetz/gruvbox'
+
+" Display git diff beside line number
+Plugin 'airblade/vim-gitgutter'
+
+" Git tools
+Plugin 'tpope/vim-fugitive'
+
+" Directory-local vimrc overrides (loaded after main vimrc)
+Plugin 'embear/vim-localvimrc'
+
+Plugin 'challenger-deep-theme/vim'
+
+Plugin 'leafgarland/typescript-vim'
+
+Plugin 'jacoborus/tender.vim'
+
+Plugin 'rakr/vim-two-firewatch'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
+" Turn on filetype detection
+filetype plugin indent on
+
+" Include and use powerline
+set rtp+=/usr/local/lib/python3.6/dist-packages/powerline/bindings/vim
+
+python3 from powerline.vim import setup as powerline_setup
+python3 powerline_setup()
+python3 del powerline_setup
+
+" Syntax highlighting
+syntax on
+
+" Colours (assumes 256-colour terminal)
+"let g:gruvbox_termcolors="256"
+"let g:gruvbox_contrast_dark="hard"
+set t_Co=256
 set background=dark
-let g:ycm_autoclose_preview_window_after_insertion = 1
-map <C-n> :NERDTreeToggle<CR> 
+colorscheme challenger_deep
 
-"------------------------------------------------------------
-" Must have options {{{1
-"
-" These are highly recommended options.
- 
-" Vim with default settings does not allow easy switching between multiple files
-" in the same editor window. Users can use multiple split windows or multiple
-" tab pages to edit multiple files, but it is still best to enable an option to
-" allow easier switching between files.
-"
-" One such option is the 'hidden' option, which allows you to re-use the same
-" window and switch from an unsaved buffer without saving it first. Also allows
-" you to keep an undo history for multiple files when re-using the same window
-" in this way. Note that using persistent undo also lets you undo in multiple
-" files even in the same window, but is less efficient and is actually designed
-" for keeping undo history after closing Vim entirely. Vim will complain if you
-" try to quit without saving, and swap files will keep you safe if your computer
-" crashes.
-set hidden
- 
-" Note that not everyone likes working this way (with the hidden option).
-" Alternatives include using tabs or split windows instead of re-using the same
-" window as mentioned above, and/or either of the following options:
-" set confirm
-" set autowriteall
- 
-" Better command-line completion
-set wildmenu
- 
-" Show partial commands in the last line of the screen
-set showcmd
- 
-" Highlight searches (use <C-L> to temporarily turn off highlighting; see the
-" mapping of <C-L> below)
-set hlsearch
- 
-" Modelines have historically been a source of security vulnerabilities. As
-" such, it may be a good idea to disable them and use the securemodelines
-" script, <http://www.vim.org/scripts/script.php?script_id=1876>.
-" set nomodeline
- 
- 
-"------------------------------------------------------------
-" Usability options {{{1
-"
-" These are options that users frequently set in their .vimrc. Some of them
-" change Vim's behaviour in ways which deviate from the true Vi way, but
-" which are considered to add usability. Which, if any, of these options to
-" use is very much a personal preference, but they are harmless.
- 
-" Use case insensitive search, except when using capital letters
-set ignorecase
-set smartcase
- 
-" Allow backspacing over autoindent, line breaks and start of insert action
-set backspace=indent,eol,start
- 
-" When opening a new line and no filetype-specific indenting is enabled, keep
-" the same indent as the line you're currently on. Useful for READMEs, etc.
-set autoindent
-set smartindent
-" Stop certain movements from always going to the first character of a line.
-" While this behaviour deviates from that of Vi, it does what most users
-" coming from other editors would expect.
-set nostartofline
- 
-" Display the cursor position on the last line of the screen or in the status
-" line of a window
-set ruler
- 
-" Always display the status line, even if only one window is displayed
-set laststatus=2
- 
-" Instead of failing a command because of unsaved changes, instead raise a
-" dialogue asking if you wish to save changed files.
-set confirm
- 
-" Use visual bell instead of beeping when doing something wrong
-set visualbell
- 
-" And reset the terminal code for the visual bell. If visualbell is set, and
-" this line is also included, vim will neither flash nor beep. If visualbell
-" is unset, this does nothing.
-set t_vb=
- 
-" Enable use of the mouse for all modes
-set mouse=a
- 
-" Set the command window height to 2 lines, to avoid many cases of having to
-" "press <Enter> to continue"
-set cmdheight=2
- 
-" Display line numbers on the left
-set number
- 
-" Quickly time out on keycodes, but never time out on mappings
-set notimeout ttimeout ttimeoutlen=200
- 
-" Use <F11> to toggle between 'paste' and 'nopaste'
-set pastetoggle=<F11>
- 
- 
-"------------------------------------------------------------
-" Indentation options {{{1
-"
-" Indentation settings according to personal preference.
- 
-" Indentation settings for using 4 spaces instead of tabs.
-" Do not change 'tabstop' from its default value of 8 with this setup.
-set shiftwidth=4
-set softtabstop=0
-set expandtab
-set tabstop=8
-set smarttab
-" Indentation settings for using hard tabs for indent. Display tabs as
-" four characters wide.
-"set shiftwidth=4
-"set tabstop=4
- 
- 
-"------------------------------------------------------------
-" Mappings {{{1
-"
-" Useful mappings
- 
-" Map Y to act like D and C, i.e. to yank until EOL, rather than act as yy,
-" which is the default
-map Y y$
- 
-" Map <C-L> (redraw screen) to also turn off search highlighting until the
-" next search
-nnoremap <C-L> :nohl<CR><C-L>
+set backspace=2 " enable <BS> for everything
+set completeopt-=preview " don't show preview window
+set hidden " hide when switching buffers, don't unload
+set laststatus=2 " always show status line
+set lazyredraw " don't update the screen when executing macros
+set mouse=a " enable mouse scroll
+set number " show line numbers
+set relativenumber " show relative line number for all lines but current
+set showcmd " show command on last line of screen
+set showmatch " show bracket matches
+set textwidth=100
+set linebreak " soft wrap lines at whitespace instead of in middle of words
+set title " use file name in window title
+set wildmenu " enhanched cmd line completion
+set spelllang=en_GB
+set clipboard=autoselect
+set ttymouse=xterm2
+
+" Display whitespace
+set listchars=trail:·,precedes:«,extends:»,tab:▸\ 
+set list
+
+" Folding
+set foldignore= " don't ignore anything when folding
+set foldlevelstart=99 " no folds closed on open
+set foldmethod=indent " collapse code using indentation
+
+" Tabs
+set autoindent " copy indent from previous line
+set shiftwidth=4 " spaces for autoindenting
+set smarttab " <BS> removes shiftwidth worth of spaces
+set tabstop=4 " no of spaces for <Tab>
+set expandtab " spaces instead of tabs
+
+" Searches
+set hlsearch " highlight search results
+set incsearch " search whilst typing
+set ignorecase " case insensitive searching
+set smartcase " override ignorecase if upper case typed
+
+" Mappings
+let mapleader = ","
+
+nmap <silent> <C-n> :noh<CR>
+
+" Leave insert mode with S-space
+imap <S-Space> <Esc>
+
+" Move up & down lines visually (without breaking line counting)
+noremap <silent> <expr> j (v:count == 0 ? 'gj' : 'j')
+noremap <silent> <expr> k (v:count == 0 ? 'gk' : 'k')
+
+" Less emacsy window switching
+nnoremap <C-h> <C-w>h
+nnoremap <C-l> <C-w>l
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+
+" Allow window switching in insert mode
+imap <C-h> <Esc><C-h>
+imap <C-l> <Esc><C-l>
+
+" Switch tabs with tab in normal mode
+nnoremap <Tab> :tabn<CR>
+nnoremap <S-Tab> :tabp<CR>
+
+" Bindings for YCM actions
+nnoremap <leader>gt :YcmCompleter GoTo<CR>
+nnoremap <leader>gtc :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gtf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gd :YcmCompleter GetDoc<CR>
+nnoremap <leader>t :YcmCompleter GetType<CR>
+nnoremap <leader>ck :YcmDiags<CR>
+
+" Remove noisy 'User defined completion' message
+set shortmess+=c
+
+" Conveniently exit vimdiff when using git difftool
+if &diff
+    map Q :cquit<CR>
+    map <C-c> :qa!<CR>
+endif
 
 
-"VIM AIRLINE SETTINGS
-"
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'onedark'
+" Bindings for nerdtree actions
+nnoremap <F2> :NERDTreeToggle<CR>
+
+" Files to ignore when searching (Ctrl-P)
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
+" Triggers for ultisnips
+let g:UltiSnipsExpandTrigger="<C-j>"
+
+let delimitMate_expand_cr = 1
+
+" Highlight cursor line
+set cursorline
+hi CursorLine cterm=NONE ctermbg=0
+
+" Right margin
+set colorcolumn=+1
+highlight ColorColumn ctermbg=0
+
+" Sign Column (gutter)
+highlight clear SignColumn
