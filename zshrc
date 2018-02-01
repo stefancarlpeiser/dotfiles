@@ -51,7 +51,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git git-extras vi-mode)
 
 # User configuration
 
@@ -60,8 +60,9 @@ plugins=(git)
 alias dcp="docker-compose"
 alias dcpr="docker-compose restart"
 alias dcpl="docker-compose logs"
-alias cdp="cd ~/Perforce/stefanp_laptop/dev/tsim-student-web/tasks/autumn2017"
-alias cdpp="cd ~/Perforce/stefanp_laptop/dev/tsim-student-web/tasks/autumn2017/frontend/django/is_tern_asr/student_version/radar_vectoring"
+alias cdw="cd ~/git/work/tsim-student-web"
+alias cds="cd ~/git/school"
+alias cdp="cd ~/git/personal"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -91,4 +92,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH=/opt/anaconda/bin:$PATH
+export EDITOR=vim
+export PATH=/opt/anaconda3/bin:$PATH
