@@ -92,6 +92,8 @@ vim +PluginInstall +qall
 rm -rf ./tmp/
 
 # Install oh my zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 
 cp ./zshrc ~/.zshrc
+
+usermod -s /bin/zsh $(cut -d: -f1 /etc/passwd | tail -n1)
