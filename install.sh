@@ -10,12 +10,14 @@ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sourc
 
 apt update
 
-apt upgrade
+apt upgrade -y
 
 # Next we fetch the programs we want to use.
 
-apt install git curl lxappearance i3-wm rofi i3blocks compton pavucontrol arc-theme numix-icon-theme
-shutter blueman spotify-client qbittorrent vim-gtk zsh acpi python3-pip python3-pip feh
+apt install -y git curl lxappearance i3-wm rofi i3blocks compton
+    \ pavucontrol arc-theme numix-icon-theme
+    \ shutter blueman spotify-client qbittorrent
+    \ vim-gtk zsh acpi python3-pip python3-pip feh
 # Next we fetch programs that are not in the standard repositories
 
 mkdir ./tmp/
@@ -31,7 +33,7 @@ wget https://github.com/acrisci/playerctl/releases/download/v0.5.0/playerctl-0.5
 
 dpkg -i ./tmp/*.deb
 
-apt install -f
+apt install -y -f
 
 # Install vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -81,7 +83,7 @@ pip3 install python-powerline
 # Install font awesome
 wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.zip 
 
-unzip Font*.zip
+unzip *.zip
 
 cp Font*/fonts/*.ttf /usr/share/fonts/
 
