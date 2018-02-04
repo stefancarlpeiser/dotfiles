@@ -13,11 +13,8 @@ apt update
 apt upgrade -y
 
 # Next we fetch the programs we want to use.
+xargs -d '\n' -- apt install -y < ./programs.txt
 
-apt install -y git curl lxappearance i3-wm rofi i3blocks compton
-    \ pavucontrol arc-theme numix-icon-theme
-    \ shutter blueman spotify-client qbittorrent
-    \ vim-gtk zsh acpi python3-pip python3-pip feh
 # Next we fetch programs that are not in the standard repositories
 
 mkdir ./tmp/
