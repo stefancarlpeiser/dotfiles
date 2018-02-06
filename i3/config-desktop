@@ -201,8 +201,8 @@ exec_always --no-startup-id xrandr --output DVI-D-0 --mode 1920x1080 --pos 2560x
 exec_always xrdb ~/.Xresources
 exec --no-startup-id spotify
 exec --no-startup-id google-chrome
-exec --no-startup-id dropbox start
-exec --no-startup-id compton -f 
+exec --no-startup-id compton -f
+
 
 set $bg-color            #2f343f
 set $inactive-bg-color   #2f343f

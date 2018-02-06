@@ -1,1 +1,0 @@
-atom-beautify atom-typescript color-picker emmet file-icons highlight-selected  language-babel language-scala linter linter-eslint linter-jshint linter-scalac minimap pigments script seti-ui seti-syntax
