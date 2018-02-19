@@ -153,8 +153,7 @@ imap <C-h> <Esc><C-h>
 imap <C-l> <Esc><C-l>
 
 " Switch tabs with tab in normal mode
-nnoremap <Tab> :tabn<CR>
-nnoremap <S-Tab> :tabp<CR>
+nnoremap <S-Tab> :tabn<CR>
 
 " Bindings for YCM actions
 nnoremap <leader>gt :YcmCompleter GoTo<CR>
@@ -179,7 +178,7 @@ nnoremap <F2> :NERDTreeToggle<CR>
 
 " Files to ignore when searching (Ctrl-P)
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+"let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
 " Triggers for ultisnips
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -196,3 +195,5 @@ highlight ColorColumn ctermbg=0
 
 " Sign Column (gutter)
 highlight clear SignColumn
+
+highlight LineNr ctermfg=white
