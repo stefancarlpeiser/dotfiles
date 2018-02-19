@@ -185,6 +185,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+bindsym $mod+Control+s shutter -s
 
 exec_always --no-startup-id feh --bg-scale /home/${USER}/Pictures/wallpapers/wallpaper.jpg 
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
@@ -192,6 +193,7 @@ exec --no-startup-id nm-applet
 exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id insync start
 exec_always --no-startup-id xrdb ~/.Xresources
+exec_always setxkbmap -option caps:ctrl_modifier
 exec spotify
 exec google-chrome-stable
 exec slack

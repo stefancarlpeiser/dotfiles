@@ -5,10 +5,8 @@
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="robbyrussell"
-
-ZSH_THEME="agnoster"
-
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -61,6 +59,7 @@ alias dcp="docker-compose"
 alias dcpr="docker-compose restart"
 alias dcpl="docker-compose logs"
 alias cdw="cd ~/git/work/tsim-student-web"
+alias cdww="cd ~/git/work/tsim-student-web/frontend/django/is_tern_asr/student_version/radar_vectoring"
 alias cds="cd ~/git/school"
 alias cdp="cd ~/git/personal"
 
@@ -93,4 +92,21 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export EDITOR=vim
-export PATH=/opt/anaconda3/bin:$PATH
+export PATH="/home/stefan/netbeans-8.2/bin:/home/stefan/.anaconda3/bin:$PATH"
+
+function powerline_precmd() {
+    PS1="$(~/go/bin/powerline-go -error $? -shell zsh)"
+}
+
+function install_powerline_precmd() {
+  for s in "${precmd_functions[@]}"; do
+    if [ "$s" = "powerline_precmd" ]; then
+      return
+    fi
+  done
+  precmd_functions+=(powerline_precmd)
+}
+
+if [ "$TERM" != "linux" ]; then
+    install_powerline_precmd
+fi

@@ -197,8 +197,7 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
-bindsym $mod+p exec /home/${USER}/.config/i3/i3lock-fancy-multimonitor/lock
-
+bindsym $mod+Control+s shutter -s
 
 exec_always --no-startup-id feh --bg-scale /home/${USER}/Pictures/wallpapers/wallpaper.jpg 
 exec_always --no-startup-id xrandr --output eDP-1 --mode 1920x1080 --pos 0x0 --rotate normal --output DP-1 --primary --mode 1920x1200 --pos 1920x0 --rotate normal
