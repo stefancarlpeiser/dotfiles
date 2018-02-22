@@ -94,19 +94,39 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR=vim
 export PATH="/home/stefan/netbeans-8.2/bin:/home/stefan/.anaconda3/bin:$PATH"
 
-function powerline_precmd() {
-    PS1="$(~/go/bin/powerline-go -error $? -shell zsh)"
-}
+# function powerline_precmd() {
+#     PS1="$(~/go/bin/powerline-go -error $? -shell zsh -cwd-max-depth 3)"
+# }
+# 
+# function install_powerline_precmd() {
+#   for s in "${precmd_functions[@]}"; do
+#     if [ "$s" = "powerline_precmd" ]; then
+#       return
+#     fi
+#   done
+#   precmd_functions+=(powerline_precmd)
+# }
+# 
+# if [ "$TERM" != "linux" ]; then
+#     install_powerline_precmd
+# fi
 
-function install_powerline_precmd() {
-  for s in "${precmd_functions[@]}"; do
-    if [ "$s" = "powerline_precmd" ]; then
-      return
-    fi
-  done
-  precmd_functions+=(powerline_precmd)
-}
-
-if [ "$TERM" != "linux" ]; then
-    install_powerline_precmd
-fi
+#function powerline_precmd() {
+#    PS1="$(powerline-shell --shell zsh $?)"
+#}
+#
+#function install_powerline_precmd() {
+#  for s in "${precmd_functions[@]}"; do
+#    if [ "$s" = "powerline_precmd" ]; then
+#      return
+#    fi
+#  done
+#  precmd_functions+=(powerline_precmd)
+#}
+#
+#if [ "$TERM" != "linux" ]; then
+#    install_powerline_precmd
+#fi
+#
+powerline-daemon -q
+. /usr/local/lib/python3.6/dist-packages/powerline/bindings/zsh/powerline.zsh
