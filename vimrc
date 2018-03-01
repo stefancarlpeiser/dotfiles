@@ -6,69 +6,58 @@ set nocompatible
 " Deactivate filetype identification until after plugins have been activated
 filetype off
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+call plug#begin()
 
 " Code completion plugin
-Plugin 'valloric/YouCompleteMe'
+Plug 'valloric/YouCompleteMe'
 
 " Better C++ syntax highlighting
-Plugin 'octol/vim-cpp-enhanced-highlight'
-
-" Dependency for vim-easytags
-Plugin 'xolox/vim-misc'
-
-" Tagbar: display file synopsis based on Ctags
-Plugin 'majutsushi/tagbar'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " File browser
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " Change surrounding delimiters via cs<current-delims><desired-delims>
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Insert brackets in pairs
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " Fuzzy search tool
-Plugin 'ctrlpvim/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " Snippet engine
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
+
+Plug 'honza/vim-snippets'
 
 " Snippets for ultisnips
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
+
+
+" Interactive scratchpad
+Plug 'metakirby5/codi.vim'
+
 
 " Typescript plugin
+Plug 'leafgarland/typescript-vim'
 
-Plugin 'Quramy/tsuquyomi'
+"Plug 'Quramy/tsuquyomi'
 
-" Colour scheme
-Plugin 'morhetz/gruvbox'
+" Lint engine
+Plug 'w0rp/ale'
 
 " Display git diff beside line number
-Plugin 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 
 " Git tools
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-" Directory-local vimrc overrides (loaded after main vimrc)
-Plugin 'embear/vim-localvimrc'
-
-Plugin 'challenger-deep-theme/vim'
-
-Plugin 'leafgarland/typescript-vim'
-
-Plugin 'jacoborus/tender.vim'
-
-Plugin 'rakr/vim-two-firewatch'
+" Color scheme
+Plug 'challenger-deep-theme/vim'
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
+call plug#end()            " required
 
 " Turn on filetype detection
 filetype plugin indent on
@@ -84,8 +73,6 @@ python3 del powerline_setup
 syntax on
 
 " Colours (assumes 256-colour terminal)
-"let g:gruvbox_termcolors="256"
-"let g:gruvbox_contrast_dark="hard"
 set t_Co=256
 set background=dark
 colorscheme challenger_deep
@@ -172,6 +159,17 @@ if &diff
     map <C-c> :qa!<CR>
 endif
 
+
+"" Syntastic settings
+"let g:tsuquyomi_disable_quickfix = 1
+"let g:syntastic_typescript_checkers = ['tsuquyomi']
+"let g:syntastic_python_checkers = ["flake8"]
+
+" Ale completion settings
+
+let g:ale_completion_enabled = 1
+
+let g:ale_fixers = { 'javascript' : ['eslint'],}
 
 " Bindings for nerdtree actions
 nnoremap <F2> :NERDTreeToggle<CR>
