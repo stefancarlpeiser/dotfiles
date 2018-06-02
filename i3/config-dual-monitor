@@ -17,7 +17,7 @@ set $mod Mod4
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:DejaVu Sans Mono for Powerline 10
+font pango:Hack Regular 10
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -91,15 +91,16 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 set $workspace1 "1: Chrome "
-set $workspace2 "2: vim "
+set $workspace2 "2: vim "
 set $workspace3 "3: Terminals "
-set $workspace4 "4: Slack/Discord"
+set $workspace4 "4: Slack/Discord "
 set $workspace5 "5: VS Code "
-set $workspace6 "6: Misc"
-set $workspace7 "7: Misc"
-set $workspace8 "8: Terminals "
-set $workspace9 "9: Misc"
+set $workspace6 "6: Nautilus "
+set $workspace7 "7: Misc "
+set $workspace8 "8: Misc "
+set $workspace9 "9: Misc "
 set $workspace10 "10: Spotify "
+
 
 # switch to workspace
 bindsym $mod+1 workspace $workspace1
@@ -130,8 +131,9 @@ for_window [class="Spotify"] move to workspace $workspace10
 assign [class="Google-chrome"] $workspace1
 assign [class="Rhythmbox"] $workspace10
 assign [class="Slack"] $workspace4
-assign [class="Discord"] $workdpace4
+assign [class="Discord"] $workspace4
 assign [class="Code"] $workspace5
+assign [class="Nautilus"] $workspace6
 
 workspace $workspace1 output DP-1
 workspace $workspace2 output DP-1
