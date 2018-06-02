@@ -1,15 +1,6 @@
 #!/bin/bash
 
 # THIS IS FOR DEB/APT BASED SYSTEMS
-
-# First update the repositories
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-
-# 2. Add the Spotify repository
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-
-curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-
 apt update
 
 apt upgrade -y
@@ -34,17 +25,8 @@ dpkg -i ./tmp/*.deb
 
 apt install -y -f
 
-# Install vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-
-#Install powerline fonts
-
-git clone https://github.com/powerline/fonts.git --depth=1
-
-fonts/install.sh
-
-rm -rf ./fonts
-
+# Install vim-plug
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # Move dotfiles
 cp -r ./i3 ~/.config/
@@ -62,31 +44,27 @@ cp -r ./wallpapers ~/Pictures/
 
 # i3 blocks files
 
-wget https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/key_layout/key_layout -O
-/usr/share/i3blocks
+wget https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/key_layout/key_layout -O /usr/share/i3blocks
 
 chmod 755 /usr/share/i3blocks/key_layout
 
-wget https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/battery2/battery2 -O
-/usr/share/i3blocks
+wget https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/battery2/battery2 -O /usr/share/i3blocks
 
 rm /usr/share/i3blocks/battery
 
+rm /usr/share/i3blocks/mediaplayer
+
+wget https://raw.githubusercontent.com/vivien/i3blocks-contrib/master/mediaplayer/mediaplayer -O /usr/share/i3blocks
+
 mv /usr/share/i3blocks/battery2 /usr/share/i3blocks/battery
 
-chmod 755 /usr/share/i3blocks/battery
+chmod 755 /usr/share/i3blocks/battery /usr/share/i3blocks/mediaplayer
 
 # Install python powerline
 pip3 install python-powerline
 
-# Install font awesome
-wget https://github.com/FortAwesome/Font-Awesome/archive/v4.7.0.zip 
-
-unzip *.zip
-
-cp Font*/fonts/*.ttf /usr/share/fonts/
-
-rm -rf Font-Awesome*
+# Install powerline Go
+go get -u github.com/justjanne/powerline-go
 
 # Install vim plugins
 vim +PluginInstall +qall

@@ -25,3 +25,5 @@ make
 cmake
 automake
 nodejs
+fonts-powerline
+fonts-font-awesome
