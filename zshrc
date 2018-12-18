@@ -55,11 +55,6 @@ plugins=(git git-extras vi-mode docker docker-compose)
 
 # export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-alias dcp="docker-compose"
-alias dcpr="docker-compose restart"
-alias dcpl="docker-compose logs"
-alias cdw="cd ~/git/work/tsim-student-web"
-alias cdww="cd ~/git/work/tsim-student-web/frontend/django/is_tern_asr/student_version/radar_vectoring"
 alias cds="cd ~/git/school"
 alias cdp="cd ~/git/personal"
 
@@ -92,9 +87,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export EDITOR=vim
-export PATH="/home/stefan/netbeans-8.2/bin:/home/stefan/.anaconda3/bin:$PATH"
-
 POWERLINE_MODULES="venv,user,ssh,cwd,perms,docker,git,exit,root"
+
 function powerline_precmd() {
     PS1="$(~/go/bin/powerline-go -error $? -shell zsh -cwd-max-depth 3 -modules $POWERLINE_MODULES )"
 }

@@ -11,9 +11,6 @@ call plug#begin()
 " Code completion plugin
 Plug 'valloric/YouCompleteMe'
 
-" Better C++ syntax highlighting
-Plug 'octol/vim-cpp-enhanced-highlight'
-
 " File browser
 Plug 'scrooloose/nerdtree'
 
@@ -29,23 +26,14 @@ Plug 'ctrlpvim/ctrlp.vim'
 " Snippet engine
 Plug 'SirVer/ultisnips'
 
-Plug 'honza/vim-snippets'
-
 " Snippets for ultisnips
 Plug 'honza/vim-snippets'
 
-
-" Interactive scratchpad
-Plug 'metakirby5/codi.vim'
-
-
 " Typescript plugin
-Plug 'leafgarland/typescript-vim'
-
-"Plug 'Quramy/tsuquyomi'
+"Plug 'leafgarland/typescript-vim'
 
 " Lint engine
-Plug 'w0rp/ale'
+"Plug 'w0rp/ale'
 
 " Display git diff beside line number
 Plug 'airblade/vim-gitgutter'
@@ -106,9 +94,9 @@ set foldmethod=indent " collapse code using indentation
 
 " Tabs
 set autoindent " copy indent from previous line
-set shiftwidth=4 " spaces for autoindenting
+set shiftwidth=2 " spaces for autoindenting
 set smarttab " <BS> removes shiftwidth worth of spaces
-set tabstop=4 " no of spaces for <Tab>
+set tabstop=2 " no of spaces for <Tab>
 set expandtab " spaces instead of tabs
 
 " Searches

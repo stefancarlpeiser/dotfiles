@@ -1,4 +1,5 @@
 curl
+wget
 lxappearance
 i3-wm
 rofi
@@ -9,7 +10,6 @@ arc-theme
 numix-icon-theme
 shutter
 blueman
-spotify-client
 qbittorrent
 vim-gtk
 zsh
@@ -27,3 +27,4 @@ automake
 nodejs
 fonts-powerline
 fonts-font-awesome
+fonts-hack-ttf
