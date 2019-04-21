@@ -1,26 +1,27 @@
 [bar/top]
 monitor = ${env:MONITOR_TOP:}
 width = 100%
-height = 34
+height = 22
 
 background = #00000000
 foreground = #ccffffff
 
 line-color = ${bar/bottom.background}
-line-size = 16
+line-size = 1 
 
-spacing = 5
+spacing = 4
 padding-right = 5
 padding-left = 5
-module-margin = 4
+module-margin = 2
 
 font-0 = NotoSans-Regular:size=8;-1
 font-1 = MaterialIcons:size=10;0
-font-2 = Termsynu:size=8:antialias=false;-2
+font-2 = Hack:size=8:antialias=false;-2
 font-3 = FontAwesome:size=10;0
 
-modules-left = powermenu mpd
-modules-right = volume wired-network date
+modules-left = powermenu
+modules-center = spotify
+modules-right = keyboard volume wired-network date
 
 [bar/bottom]
 monitor = ${env:MONITOR_BOTTOM:}
@@ -41,14 +42,29 @@ module-margin-left = 0
 module-margin-right = 6
 
 font-0 = NotoSans-Regular:size=10;0
-font-1 = unifont:size=8;-3
+font-1 = Hack:size=8;-3
 font-2 = FontAwesome:size=10;-2
 font-3 = NotoSans-Regular:size=10;-1
 font-4 = MaterialIcons:size=12;-1
-font-5 = Termsynu:size=10:antialias=false;0
+font-5 = Hack:size=10:antialias=false;0
 
 modules-left = i3
 modules-right = cpu memory
+
+[module/keyboard]
+type = internal/xkeyboard
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+[module/spotify]
+type = custom/script
+interval = 1
+format-prefix = " "
+format = <label>
+exec = python ~/.config/polybar/spotify_status.py -f '{play_pause} {artist}: {song}'
+format-underline = #1db954
 
 [module/i3]
 type = internal/i3
@@ -219,7 +235,7 @@ menu-0-1-exec = sudo reboot
 
 menu-0-2 =   
 menu-0-2-foreground = #fba922
-menu-0-2-exec = i3lock
+menu-0-2-exec = i3lock-fancy -p
 
 [module/clock]
 type = internal/date
