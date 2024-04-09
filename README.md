@@ -1,2 +1,2 @@
-# my linux dotfiles
-WIP
+# dotfiles
+  WIP stuff for macOS setup
