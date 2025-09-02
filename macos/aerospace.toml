@@ -1,0 +1,222 @@
+# AeroSpace config optimized for Glove80 with TailorKey layout on Icelandic macOS
+# Place a copy of this config to ~/.aerospace.toml
+
+# You can use it to add commands that run after login to macOS user session.
+# 'start-at-login' needs to be 'true' for 'after-login-command' to work
+# Available commands: https://nikitabobko.github.io/AeroSpace/commands
+after-login-command = []
+
+# You can use it to add commands that run after AeroSpace startup.
+# 'after-startup-command' is run after 'after-login-command'
+# Available commands : https://nikitabobko.github.io/AeroSpace/commands
+after-startup-command = []
+
+# Start AeroSpace at login
+start-at-login = true
+
+# Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+
+# See: https://nikitabobko.github.io/AeroSpace/guide#layouts
+# The 'accordion-padding' specifies the size of accordion padding
+# Disabled since accordion is not used
+accordion-padding = 0
+
+# Possible values: tiles|accordion
+default-root-container-layout = 'tiles'
+
+# Possible values: horizontal|vertical|auto
+# 'auto' means: wide monitor (anything wider than high) gets horizontal orientation,
+#               tall monitor (anything higher than wide) gets vertical orientation
+default-root-container-orientation = 'auto'
+
+# Mouse follows focus when focused monitor changes
+# Drop it from your config, if you don't like this behavior
+# See https://nikitabobko.github.io/AeroSpace/guide#on-focus-changed-callbacks
+# See https://nikitabobko.github.io/AeroSpace/commands#move-mouse
+# Fallback value (if you omit the key): on-focused-monitor-changed = []
+# on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+# on-focus-changed = 'move-mouse window-lazy-center'
+# You can effectively turn off macOS "Hide application" (cmd-h) feature by toggling this flag
+# Useful if you don't use this macOS feature, but accidentally hit cmd-h or cmd-alt-h key
+# Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
+automatically-unhide-macos-hidden-apps = true
+
+# Possible values: (qwerty|dvorak)
+# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
+[key-mapping]
+preset = 'qwerty'
+
+# Gaps between windows (inner-*) and between monitor edges (outer-*).
+# Optimized for Glove80's precision - slightly larger gaps for better visual separation
+[gaps]
+inner.horizontal = 16
+inner.vertical = 16
+outer.left = 10
+outer.bottom = 10
+outer.top = 10
+outer.right = 10
+
+[[on-window-detected]]
+if.app-id = 'company.thebrowser.Browser'
+run = 'move-node-to-workspace W'
+
+# Spotify for music workspace
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace M'
+
+# 'main' binding mode declaration
+# Optimized for Glove80 TailorKey layout with Icelandic keyboard considerations
+[mode.main.binding]
+
+# ============================================================================
+# CORE NAVIGATION - Using TailorKey home row optimization
+# TailorKey philosophy: ARST (left home), NEIO (right home)
+# But adapted for comfort with Icelandic layout
+# ============================================================================
+
+# Focus movement - Using Hyper key (Ctrl+Alt+Shift+Cmd) for zero conflicts
+# Configure Hyper on a thumb key on your Glove80 for easy access
+ctrl-alt-shift-cmd-h = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left'
+ctrl-alt-shift-cmd-j = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down'
+ctrl-alt-shift-cmd-k = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up'
+ctrl-alt-shift-cmd-l = 'focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right'
+
+# Window movement - Using Meh key (Ctrl+Alt+Shift) for window operations
+ctrl-alt-shift-h = 'move left'
+ctrl-alt-shift-j = 'move down'
+ctrl-alt-shift-k = 'move up'
+ctrl-alt-shift-l = 'move right'
+
+
+# ============================================================================
+# WORKSPACE NAVIGATION - Optimized for Glove80 number row and thumb clusters
+# ============================================================================
+
+# Named workspaces for specific purposes - using Hyper key
+ctrl-alt-shift-cmd-1 = 'workspace 1'
+ctrl-alt-shift-cmd-2 = 'workspace 2'
+ctrl-alt-shift-cmd-3 = 'workspace 3'
+ctrl-alt-shift-cmd-4 = 'workspace 4'
+ctrl-alt-shift-cmd-d = 'workspace D' # default
+ctrl-alt-shift-cmd-t = 'workspace T' # Terminal (Warp + Neovim)
+ctrl-alt-shift-cmd-w = 'workspace W' # Web (Arc Browser)
+ctrl-alt-shift-cmd-m = 'workspace M' # Music/Media
+
+# Move windows to workspaces - using Meh key
+ctrl-alt-shift-1 = 'workspace 1'
+ctrl-alt-shift-2 = 'workspace 2'
+ctrl-alt-shift-3 = 'workspace 3'
+ctrl-alt-shift-4 = 'workspace 4'
+ctrl-alt-shift-d = 'move-node-to-workspace D'
+ctrl-alt-shift-t = 'move-node-to-workspace T'
+ctrl-alt-shift-w = 'move-node-to-workspace W'
+ctrl-alt-shift-m = 'move-node-to-workspace M'
+
+# ============================================================================
+# LAYOUT CONTROLS - Using easily accessible keys on Glove80
+# ============================================================================
+
+# Layout switching - using Hyper key
+ctrl-alt-shift-cmd-z = 'layout tiles horizontal vertical'
+ctrl-alt-shift-cmd-a = 'layout accordion horizontal vertical'
+
+# Quick layout changes using Hyper key
+ctrl-alt-shift-cmd-v = 'layout vertical'        # V for vertical
+ctrl-alt-shift-cmd-b = 'layout horizontal'      # B for horizontal
+ctrl-alt-shift-cmd-x = 'layout tiling floating' # F for floating
+ctrl-alt-shift-cmd-f = 'fullscreen'             # Fullscreen
+
+# ============================================================================
+# GLOVE80 THUMB CLUSTER OPTIMIZATIONS
+# Using space and easily accessible thumb keys
+# ============================================================================
+
+# Workspace back-and-forth - using Hyper + space
+ctrl-alt-shift-cmd-space = 'workspace-back-and-forth'
+
+# Terminal launch - using Hyper + enter
+ctrl-alt-shift-cmd-enter = 'exec-and-forget open -n /Applications/Warp.app'
+
+# Alternative app launchers - using Meh key for secondary actions
+ctrl-alt-shift-enter = 'exec-and-forget open -n /Applications/Arc.app'
+
+# ============================================================================
+# WORKSPACE AND MONITOR MANAGEMENT
+# ============================================================================
+
+# Move workspace to different monitor - using Hyper + tab
+ctrl-alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+ctrl-alt-shift-cmd-tab = 'move-workspace-to-monitor --wrap-around prev'
+
+# ============================================================================
+# SERVICE MODE - Using accessible key combination
+# Changed from semicolon to something more accessible on Icelandic layout
+# ============================================================================
+
+# Enter service mode - using Hyper + S
+ctrl-alt-shift-cmd-s = 'mode service' # S for service
+
+# ============================================================================
+# ICELANDIC LAYOUT SPECIFIC CONSIDERATIONS
+# Using keys that are in similar positions regardless of layout
+# ============================================================================
+
+# Quick window closing - using Meh + Q
+ctrl-alt-shift-q = 'close'
+
+# Resize mode toggle - using Hyper + R
+ctrl-alt-shift-cmd-r = 'mode resize'
+
+# Additional useful bindings for Glove80 comfort
+ctrl-alt-shift-space = 'layout floating tiling'            # Quick floating toggle
+ctrl-alt-shift-backspace = 'close-all-windows-but-current' # Clean workspace
+
+# 'service' binding mode declaration.
+# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
+[mode.service.binding]
+esc = ['reload-config', 'mode main']
+r = ['flatten-workspace-tree', 'mode main'] # reset layout
+f = [
+  'layout floating tiling',
+  'mode main',
+] # Toggle between floating and tiling layout
+backspace = ['close-all-windows-but-current', 'mode main']
+
+# Join windows - using Meh key for joining operations
+ctrl-alt-shift-h = ['join-with left', 'mode main']
+ctrl-alt-shift-j = ['join-with down', 'mode main']
+ctrl-alt-shift-k = ['join-with up', 'mode main']
+ctrl-alt-shift-l = ['join-with right', 'mode main']
+# Monitor movement - Using Hyper + Alt for monitor operations
+ctrl-alt-shift-cmd-h = 'move-node-to-monitor --wrap-around --focus-follows-window left'
+ctrl-alt-shift-cmd-j = 'move-node-to-monitor --wrap-around --focus-follows-window down'
+ctrl-alt-shift-cmd-k = 'move-node-to-monitor --wrap-around --focus-follows-window up'
+ctrl-alt-shift-cmd-l = 'move-node-to-monitor --wrap-around --focus-follows-window right'
+
+# Volume controls - using accessible keys
+down = 'volume down'
+up = 'volume up'
+shift-down = ['volume set 0', 'mode main']
+
+# 'resize' binding mode for window resizing
+[mode.resize.binding]
+# Exit resize mode
+esc = 'mode main'
+enter = 'mode main'
+
+# Resize windows using HJKL pattern
+h = 'resize smart -50'
+j = 'resize smart +50'
+k = 'resize smart -50'
+l = 'resize smart +50'
+
+# Fine resize control with shift
+shift-h = 'resize smart -10'
+shift-j = 'resize smart +10'
+shift-k = 'resize smart -10'
+shift-l = 'resize smart +10'
+
+[mode.monitor_management.binding]
